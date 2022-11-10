@@ -1,0 +1,22 @@
+<div class="container">
+  <h1><%= @restaurants.name %></h1>
+</div>
+
+
+<ul class="list-group">
+  <li>Address: <%= @restaurants.address %></li>
+  <% unless @restaurants.phone_number.nil? %>
+    <li>Phone Number: <%= @restaurants.phone_number %></li>
+  <% end %>
+  <li>Category: <%= @restaurants.category.capitalize %></li>
+</ul>
+
+<% @restaurants.reviews.each do |review|%>
+  <li class="list-group-item list-group-item-info">Rating: <%= review.rating %> <br> <%= review.content %></li>
+<% end %>
+
+<br>
+
+<%= link_to "Add a new review",  new_restaurant_review_path(params[:id]), class: "btn btn-primary"%>
+
+<%= link_to "Go back to List",  restaurants_path, class: "btn btn-primary"%>
